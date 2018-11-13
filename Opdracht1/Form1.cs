@@ -33,7 +33,7 @@ namespace Opdracht1 {
                 verticalDistance = box.Top - cursorLocation.Y;
             }
             else if(cursorLocation.Y > box.Bottom) {
-                //cursos is underneath the box
+                //cursor is underneath the box
                 verticalDistance = cursorLocation.Y - box.Bottom;
             }
 
