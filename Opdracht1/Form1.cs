@@ -14,6 +14,8 @@ namespace Opdracht1 {
             InitializeComponent();
         }
 
+        Random mainRandom = new Random();
+
         public static double DistanceCursorToBox(Point cursorLocation, Rectangle box) {
             int horizontalDistance = 0;
             int verticalDistance = 0;
@@ -47,6 +49,22 @@ namespace Opdracht1 {
 
         public static double Pythagoras(double a, double b) {
             return Math.Sqrt(a * a + b * b);
+        }
+
+        //randomly generates a rectangle that is withing the bounds of the screen
+        public Rectangle RandomRectangleWithinScreen(Random r) {
+            const int MAX_RECTANGLE_WIDTH = 300;
+            const int MAX_RECTANGLE_HEIGHT = 300;
+            const int MIN_RECTANGLE_WIDTH = 100;
+            const int MIN_RECTANGLE_HEIGHT = 100;
+
+            int width = r.Next(MIN_RECTANGLE_WIDTH, MAX_RECTANGLE_WIDTH);
+            int height = r.Next(MIN_RECTANGLE_HEIGHT, MAX_RECTANGLE_HEIGHT);
+
+            int x = r.Next(0, this.Size.Width - width);
+            int y = r.Next(0, this.Size.Height - height);
+
+            return new Rectangle(x, y, width, height);
         }
     }
 
