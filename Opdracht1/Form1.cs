@@ -37,7 +37,12 @@ namespace Opdracht1 {
                 verticalDistance = cursorLocation.Y - box.Bottom;
             }
 
-            return Pythagoras(horizontalDistance, verticalDistance);
+            if(horizontalDistance == 0) 
+                return verticalDistance;
+            else if(verticalDistance == 0)
+                return horizontalDistance;
+            else
+                return Pythagoras(horizontalDistance, verticalDistance);
         }
 
         public static double Pythagoras(double a, double b) {
