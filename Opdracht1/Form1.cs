@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace Opdracht1 {
     public partial class Form1 : Form {
         public Form1() {
-            InitializeComponent(); ;
+            InitializeComponent();
         }
 
         public static double DistanceCursorToBox(Point cursorLocation, Rectangle box) {
@@ -47,6 +47,12 @@ namespace Opdracht1 {
 
         public static double Pythagoras(double a, double b) {
             return Math.Sqrt(a * a + b * b);
+        }
+    }
+
+    public static class Helper {
+        public static double NextDouble(this Random r, double max, double min = 0) {
+            return r.NextDouble() * (max - min) + min;
         }
     }
 }
