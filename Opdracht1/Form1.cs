@@ -26,7 +26,7 @@ namespace Opdracht1 {
                 //cursor is right from the box
                 horizontalDistance = cursorLocation.X - box.Right;
             }
-            //else, cursor is overlapping with the box, so distance = 0
+            //else, the cursor is horizontally overlapping with the box, so the distance is 0
 
             if(cursorLocation.Y < box.Top) {
                 //cursor is above the box
