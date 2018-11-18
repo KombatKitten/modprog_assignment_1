@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Opdracht1 {
-    public partial class Form1 : Form {
-        public Form1() {
+    public partial class MainScreen : Form {
+        public MainScreen() {
             InitializeComponent();
         }
 
@@ -61,8 +61,8 @@ namespace Opdracht1 {
             int width = r.Next(MIN_RECTANGLE_WIDTH, MAX_RECTANGLE_WIDTH);
             int height = r.Next(MIN_RECTANGLE_HEIGHT, MAX_RECTANGLE_HEIGHT);
 
-            int x = r.Next(0, this.Size.Width - width);
-            int y = r.Next(0, this.Size.Height - height);
+            int x = r.Next(0, this.ClientSize.Width - width);
+            int y = r.Next(0, this.ClientSize.Height - height);
 
             return new Rectangle(x, y, width, height);
         }
