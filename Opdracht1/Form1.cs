@@ -118,10 +118,4 @@ namespace Opdracht1 {
             return new Rectangle(x, y, width, height);
         }
     }
-
-    public static class Helper {
-        public static double NextDouble(this Random r, double max, double min = 0) {
-            return r.NextDouble() * (max - min) + min;
-        }
-    }
 }
