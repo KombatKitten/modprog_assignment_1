@@ -39,9 +39,10 @@ namespace Opdracht1 {
 
             this.targetButton.Visible = false;
             this.centerButton.Visible = true;
-            Console.WriteLine(this.responseTimer.ElapsedMilliseconds);
-            Console.WriteLine(this.targetButton.Size.Width);
-            Console.WriteLine(DistanceCursorToBox());
+            Console.Write(this.responseTimer.ElapsedMilliseconds + ",");
+            Console.Write(this.targetButton.Size.Width + ",");
+            //Console.WriteLine(DistanceCursorToBox());
+            
         }
 
         private void OnCenterButtonClick(object sender, EventArgs e)
@@ -51,6 +52,7 @@ namespace Opdracht1 {
             var newRectangle = RandomRectangleWithinScreen();
             this.targetButton.Location = newRectangle.Location;
             this.targetButton.Size = newRectangle.Size;
+            this.targetButton.BackColor = Color.FromArgb(180, 0, 10);
             this.targetButton.Visible = true;
             this.responseTimer.Restart();
         }
