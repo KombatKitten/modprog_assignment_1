@@ -47,12 +47,12 @@ namespace Opdracht1 {
             this.targetButton.Visible = false;
             this.centerButton.Visible = true;
             double distance = DistanceCursorToBox(this.cursorStartLocation, this.targetButton.Bounds);
-            Console.Write(distance + ",");
-            Console.Write(this.targetButton.Size.Width + ",");
-            Console.Write(IndexOfDifficulty(distance, this.targetButton.Size.Width) + ",");
+            Console.Write(distance + "\t");
+            Console.Write(this.targetButton.Size.Width + "\t");
+            Console.Write(IndexOfDifficulty(distance, this.targetButton.Size.Width) + "\t");
             Console.Write(this.responseTimer.ElapsedMilliseconds);
 
-            Console.Write("\n");
+            Console.WriteLine("");
 
             if(++this.experimentCount >= maxExperiments) {
                 this.Close();
