@@ -20,6 +20,12 @@ namespace Opdracht1 {
             this.Load += FormLoad;
         }
 
+        Button centerButton = new Button();
+        Random mainRandom = new Random();
+        Button targetButton = new Button();
+        Stopwatch responseTimer = new Stopwatch();
+        Point cursorStartLocation;
+
         private void FormLoad(object sender, EventArgs e)
         {
             int x = this.ClientSize.Width / 2 - this.centerButton.Size.Width / 2;
@@ -36,7 +42,6 @@ namespace Opdracht1 {
 
         private void OnTargetButtonClick(object sender, EventArgs e)
         {
-
             this.targetButton.Visible = false;
             this.centerButton.Visible = true;
             Console.Write(DistanceCursorToBox(this.cursorStartLocation, this.targetButton.Bounds));
@@ -46,6 +51,8 @@ namespace Opdracht1 {
 
         private void OnCenterButtonClick(object sender, EventArgs e)
         {
+            this.cursorStartLocation =this.PointToClient(Cursor.Position);
+
             this.centerButton.Visible = false;
 
             var newRectangle = RandomRectangleWithinScreen();
@@ -55,14 +62,6 @@ namespace Opdracht1 {
             this.targetButton.Visible = true;
             this.responseTimer.Restart();
         }
-
-
-        Button centerButton = new Button();
-        Random mainRandom = new Random();
-        Button targetButton = new Button();
-        Stopwatch responseTimer = new Stopwatch();
-
-
 
         public static double DistanceCursorToBox(Point cursorLocation, Rectangle box) {
             int dX = cursorLocation.X - box.X - box.Width / 2;
