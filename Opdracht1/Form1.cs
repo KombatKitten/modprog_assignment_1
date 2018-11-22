@@ -41,7 +41,7 @@ namespace Opdracht1 {
             this.centerButton.Visible = true;
             Console.WriteLine(this.responseTimer.ElapsedMilliseconds);
             Console.WriteLine(this.targetButton.Size.Width);
-            Console.WriteLine(DistanceCursorToBox());
+            Console.WriteLine(DistanceCursorToBox(this.cursorStartLocation, this.targetButton.Bounds));
         }
 
         private void OnCenterButtonClick(object sender, EventArgs e)
@@ -64,34 +64,10 @@ namespace Opdracht1 {
 
 
         public static double DistanceCursorToBox(Point cursorLocation, Rectangle box) {
-            int horizontalDistance = 0;
-            int verticalDistance = 0;
+            int dX = cursorLocation.X - box.X - box.Width / 2;
+            int dY = cursorLocation.Y - box.Y - box.Height / 2;
 
-            if(cursorLocation.X < box.Left) {
-                //cursor is left from the box
-                horizontalDistance = box.Left - cursorLocation.X;
-            }
-            else if(cursorLocation.X > box.Right) {
-                //cursor is right from the box
-                horizontalDistance = cursorLocation.X - box.Right;
-            }
-            //else, the cursor is horizontally overlapping with the box, so the distance is 0
-
-            if(cursorLocation.Y < box.Top) {
-                //cursor is above the box
-                verticalDistance = box.Top - cursorLocation.Y;
-            }
-            else if(cursorLocation.Y > box.Bottom) {
-                //cursor is underneath the box
-                verticalDistance = cursorLocation.Y - box.Bottom;
-            }
-
-            if(horizontalDistance == 0) 
-                return verticalDistance;
-            else if(verticalDistance == 0)
-                return horizontalDistance;
-            else
-                return Pythagoras(horizontalDistance, verticalDistance);
+            return Pythagoras(dX, dY);
         }
 
         public static double Pythagoras(double a, double b) {
