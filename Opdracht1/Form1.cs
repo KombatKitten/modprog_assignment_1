@@ -44,9 +44,11 @@ namespace Opdracht1 {
         {
             this.targetButton.Visible = false;
             this.centerButton.Visible = true;
-            Console.Write(DistanceCursorToBox(this.cursorStartLocation, this.targetButton.Bounds));
+            double distance = DistanceCursorToBox(this.cursorStartLocation, this.targetButton.Bounds);
+            Console.Write(distance);
             Console.Write(this.responseTimer.ElapsedMilliseconds + ",");
             Console.Write(this.targetButton.Size.Width + ",");
+            Console.Write(IndexOfDifficulty(distance, this.targetButton.Size.Width));
         }
 
         private void OnCenterButtonClick(object sender, EventArgs e)
@@ -61,6 +63,11 @@ namespace Opdracht1 {
             this.targetButton.BackColor = Color.FromArgb(180, 0, 10);
             this.targetButton.Visible = true;
             this.responseTimer.Restart();
+        }
+
+        public static double IndexOfDifficulty(double distance, double width)
+        {
+            return Math.Log(distance / width + 1, 2);
         }
 
         public static double DistanceCursorToBox(Point cursorLocation, Rectangle box) {
