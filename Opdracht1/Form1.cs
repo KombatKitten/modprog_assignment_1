@@ -13,8 +13,7 @@ namespace Opdracht1 {
     public partial class MainScreen : Form {
         public MainScreen() {
             InitializeComponent();
-
-
+            
             this.WindowState = FormWindowState.Maximized;
 
             this.Load += FormLoad;
@@ -26,13 +25,16 @@ namespace Opdracht1 {
         Stopwatch responseTimer = new Stopwatch();
         Point cursorStartLocation;
 
+        int experimentCount = 0;
+        const int maxExperiments = 20;
+
         private void FormLoad(object sender, EventArgs e)
         {
             int x = this.ClientSize.Width / 2 - this.centerButton.Size.Width / 2;
             int y = this.ClientSize.Height / 2 - this.centerButton.Size.Height / 2;
             this.centerButton.Location = new Point(x, y);
             this.Controls.Add(centerButton);
-            this.centerButton.Text = "test text";
+            this.centerButton.Text = "Click";
 
             this.centerButton.Click += this.OnCenterButtonClick;
             this.Controls.Add(this.targetButton);
@@ -47,11 +49,17 @@ namespace Opdracht1 {
             Console.Write(DistanceCursorToBox(this.cursorStartLocation, this.targetButton.Bounds));
             Console.Write(this.responseTimer.ElapsedMilliseconds + ",");
             Console.Write(this.targetButton.Size.Width + ",");
+
+            Console.Write("\n");
+
+            if(++this.experimentCount >= maxExperiments) {
+                this.Close();
+            }
         }
 
         private void OnCenterButtonClick(object sender, EventArgs e)
         {
-            this.cursorStartLocation =this.PointToClient(Cursor.Position);
+            this.cursorStartLocation = this.PointToClient(Cursor.Position);
 
             this.centerButton.Visible = false;
 
