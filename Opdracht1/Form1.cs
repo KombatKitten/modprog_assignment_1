@@ -34,7 +34,7 @@ namespace Opdracht1 {
             int y = this.ClientSize.Height / 2 - this.centerButton.Size.Height / 2;
             this.centerButton.Location = new Point(x, y);
             this.Controls.Add(centerButton);
-            this.centerButton.Text = "Click";
+            this.centerButton.Text = "Start";
 
             this.centerButton.Click += this.OnCenterButtonClick;
             this.Controls.Add(this.targetButton);
